@@ -38,6 +38,7 @@ Deve poder cadastrar um novo dog walker
 
     Fill Text       css=input[name=addressNumber]           ${numero}
     Fill Text       css=input[name=addressDetails]          ${complemento}
-          
 
-   
+   Upload File By Selector    css=input[type=file]        ${EXECDIR}/toretto.jpg    
+
+  
