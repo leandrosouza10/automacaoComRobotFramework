@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.1 on win32)" generated="20231211 12:26:18.004" rpa="false" schemaversion="4">
+<suite id="s1" name="Home" source="C:\QAx\projects\walkdog-robot\home.robot">
+<test id="s1-t1" name="Home page deve estar onLine" line="7">
+<kw name="New Browser" library="Browser">
+<arg>browser=chromium</arg>
+<arg>headless=False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<msg timestamp="20231211 12:26:20.218" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\QAx\\projects\\walkdog-robot\\logs\\browser\\traces\\a432f3e7-1dac-4b67-ae61-4c3f1d6d1f8b"}</msg>
+<msg timestamp="20231211 12:26:21.544" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\QAx\\projects\\walkdog-robot\\logs\\browser\\traces\\a432f3e7-1dac-4b67-ae61-4c3f1d6d1f8b"}</msg>
+<status status="PASS" starttime="20231211 12:26:20.217" endtime="20231211 12:26:21.544"/>
+</kw>
+<kw name="New Page" library="Browser">
+<arg>https://walkdog.vercel.app/</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<msg timestamp="20231211 12:26:24.084" level="INFO">Successfully initialized new page object and opened url: https://walkdog.vercel.app/</msg>
+<msg timestamp="20231211 12:26:24.084" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<status status="PASS" starttime="20231211 12:26:21.556" endtime="20231211 12:26:24.084"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<arg>h1</arg>
+<arg>equal</arg>
+<arg>Cuidado e diversão em cada passo</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231211 12:26:24.333" level="INFO">Text: 'Cuidado e diversão em cada passo'</msg>
+<status status="PASS" starttime="20231211 12:26:24.086" endtime="20231211 12:26:24.334"/>
+</kw>
+<kw name="Take Screenshot" library="Browser">
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20231211 12:26:24.697" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231211 12:26:24.335" endtime="20231211 12:26:24.697"/>
+</kw>
+<status status="PASS" starttime="20231211 12:26:20.211" endtime="20231211 12:26:24.698"/>
+</test>
+<doc>Suite de testes da home page</doc>
+<status status="PASS" starttime="20231211 12:26:18.007" endtime="20231211 12:26:25.022"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Home">Home</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
