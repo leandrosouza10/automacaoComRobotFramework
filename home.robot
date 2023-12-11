@@ -1,4 +1,3 @@
-
 *** Settings ***
 Documentation    Suite de testes da home page
 
