@@ -11,4 +11,4 @@ Home page deve estar onLine
     
     Get Text    h1    equal    Cuidado e diversão em cada passo
 
-    Take Screenshot
+    

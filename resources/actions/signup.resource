@@ -1,32 +1,10 @@
 *** Settings ***
-Documentation    Suite de testes de cadastro de dog walker
+Documentation    Ações, steps e elementos da funcionalidade de cadastro
 
 Library    Browser
 
-*** Test Cases ***
-Deve poder cadastrar um novo dog walker
+*** Keywords ***
 
-
-    ${dog_walker}    Create Dictionary    
-    ...    name=Dominic Toretto                
-    ...    email=toretto@gmail.com   
-    ...    cpf=00000014141  
-    ...    cep=04534011     
-    ...    street=Rua Joaquim Floriano
-    ...    numero=1200  
-    ...    complemento=Apto 200
-    ...    district=Itaim Bibi
-    ...    city=São Paulo/SP
-    ...    cnh=toretto.jpg   
-        
-
-    Go to signup page
-    Fill signup form    ${dog_walker}     
-    Submit signup form
-    Popup should be    Recebemos o seu cadastro e em breve retornaremos o contato.  
-
-
-*** Keywords ***      
 
 Go to signup page
     New Browser    browser=chromium    headless=False
@@ -52,7 +30,7 @@ Fill signup form
     Fill Text       css=input[name=addressNumber]            ${dog_walker}[numero]
     Fill Text       css=input[name=addressDetails]           ${dog_walker}[complemento]
 
-    Upload File By Selector    css=input[type=file]          ${EXECDIR}/${dog_walker}[cnh]  
+    Upload File By Selector    css=input[type=file]          ${EXECDIR}/resources/ficture/${dog_walker}[cnh]  
     
     
 Submit signup form
@@ -63,3 +41,4 @@ Popup should be
     Wait For Elements State     css=.swal2-html-container    visible    5
     Get Text                    css=.swal2-html-container    equal     ${expected.text} 
  
+
