@@ -3,9 +3,12 @@ Documentation    Suite de testes de cadastro de dog walker
 
 Resource    ../resources/base.resource
 
+Test Setup     Start session
+Test Teardown  Finish session  
+
 *** Test Cases ***
 Deve poder cadastrar um novo dog walker
-    [Tags]   CadastroComSucesso
+    [Tags]   smoke
 
     ${dog_walker}    Create Dictionary    
     ...    name=Dominic Toretto                
@@ -17,14 +20,12 @@ Deve poder cadastrar um novo dog walker
     ...    complemento=Apto 200
     ...    district=Itaim Bibi
     ...    city=São Paulo/SP
-    ...    cnh=toretto.jpg   
-
-    Start session    
+    ...    cnh=toretto.jpg  
+      
     Go to signup page
     Fill signup form    ${dog_walker}      
     Submit signup form
-    Popup should be    Recebemos o seu cadastro e em breve retornaremos o contato. 
-    Finish session 
+    Popup should be    Recebemos o seu cadastro e em breve retornaremos o contato.     
 
 
 Não deve cadastrar se o CPF for incorreto
@@ -41,12 +42,10 @@ Não deve cadastrar se o CPF for incorreto
     ...    district=Itaim Bibi
     ...    city=São Paulo/SP
     ...    cnh=toretto.jpg   
-
-    Start session    
+   
     Go to signup page
     Fill signup form    ${dog_walker}      
-    Submit signup form  
-    Finish session 
+    Submit signup form    
 
 
 Não deve cadastrar com email inválido
@@ -63,12 +62,11 @@ Não deve cadastrar com email inválido
     ...    district=Itaim Bibi
     ...    city=São Paulo/SP
     ...    cnh=toretto.jpg   
-
-    Start session    
+   
     Go to signup page
     Fill signup form    ${dog_walker}      
     Submit signup form    
-    Finish session 
+
 
 Não deve cadastrar se os campos obrigatórios não forem preenchidos
    [Tags]    required
@@ -83,8 +81,7 @@ Não deve cadastrar se os campos obrigatórios não forem preenchidos
 #    ...    district=Itaim Bibi
 #    ...    city=São Paulo/SP
 #    ...    cnh=toretto.jpg   
-
-    Start session    
+ 
     Go to signup page
 #    Fill signup form    ${dog_walker}      
     Submit signup form  
@@ -93,8 +90,54 @@ Não deve cadastrar se os campos obrigatórios não forem preenchidos
         Alert should be    Informe o seu CPF                             
         Alert should be    Informe o seu CEP                                     
         Alert should be    Informe um número maior que zero               
-        Alert should be    Adcione um documento com foto (RG ou CHN)     
-    Finish session 
+        Alert should be    Adcione um documento com foto (RG ou CHN)   
+
+
+Deve cadastrar um novo dog walker que saiba cuidar de pets
+    [Tags]    aservice
+
+    ${dog_walker}    Create Dictionary    
+    ...    name=Vin Diesel                
+    ...    email=diesel@gmail.com   
+    ...    cpf=00000014141  
+    ...    cep=04534011     
+    ...    street=Rua Joaquim Floriano
+    ...    numero=1200  
+    ...    complemento=Apto 200
+    ...    district=Itaim Bibi
+    ...    city=São Paulo/SP
+    ...    cnh=toretto.jpg 
+       
+      
+    Go to signup page
+    Fill signup form    ${dog_walker}   
+    Additional Service    Cuidar   
+    Submit signup form
+    Popup should be    Recebemos o seu cadastro e em breve retornaremos o contato. 
+
+
+Deve cadastrar um novo dog walker que saiba adestrar pets
+    [Tags]    aservice
+
+    ${dog_walker}    Create Dictionary    
+    ...    name=Paul Walker                
+    ...    email=walker@hotmail.com   
+    ...    cpf=00000014142  
+    ...    cep=04534011     
+    ...    street=Rua Joaquim Floriano
+    ...    numero=1200  
+    ...    complemento=Apto 200
+    ...    district=Itaim Bibi
+    ...    city=São Paulo/SP
+    ...    cnh=toretto.jpg 
+      
+      
+    Go to signup page
+    Fill signup form    ${dog_walker}    
+    Additional Service    Adestrar 
+    Submit signup form
+    Popup should be    Recebemos o seu cadastro e em breve retornaremos o contato.     
+   
 
 
 

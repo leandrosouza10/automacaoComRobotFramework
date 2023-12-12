@@ -5,3 +5,6 @@
 
 ### Código para rodar um teste específico e gerar relatório via linha de comando 
 #### robot -d ./logs/ -i (colocar a tag que será testada) tests/signup.robot 
+
+### Para rodar todo os testes via linha de comando 
+#### robot -d ./logs/ tests/signup.robot 

@@ -27,10 +27,17 @@ Fill signup form
     Get Property    css=input[name=addressCityUf]       value     equal           ${dog_walker}[city]
 
     Fill Text       css=input[name=addressNumber]            ${dog_walker}[numero]
-    Fill Text       css=input[name=addressDetails]           ${dog_walker}[complemento]
+    Fill Text       css=input[name=addressDetails]           ${dog_walker}[complemento]    
+  
 
     Upload File By Selector    css=input[type=file]          ${EXECDIR}/resources/ficture/${dog_walker}[cnh]  
-        
+
+Additional Service
+    [Arguments]    ${additional_service}
+
+      Click           xpath=//span[text()="${additional_service}"]/..
+   
+
 Submit signup form
     Click            css=.button-register
 
