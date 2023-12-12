@@ -1,13 +1,13 @@
 *** Settings ***
-Documentation    Suite de testesde cadastro de dog walker
+Documentation    Suite de testes de cadastro de dog walker
 
 Library    Browser
 
 *** Test Cases ***
 Deve poder cadastrar um novo dog walker
     
-    ${name}                       Set Variable     Roger Waters 
-    ${email}                      Set Variable     roger@gmail.com 
+    ${name}                       Set Variable     Dominic Toretto 
+    ${email}                      Set Variable     toretto@gmail.com 
     ${cpf}                        Set Variable     00000014141    
     ${cep}                        Set Variable     04534011 
     ${addressStreet}              Set Variable     Rua Joaquim Floriano
@@ -39,6 +39,11 @@ Deve poder cadastrar um novo dog walker
     Fill Text       css=input[name=addressNumber]           ${numero}
     Fill Text       css=input[name=addressDetails]          ${complemento}
 
-   Upload File By Selector    css=input[type=file]        ${EXECDIR}/toretto.jpg    
+   Upload File By Selector    css=input[type=file]          ${EXECDIR}/toretto.jpg    
 
-  
+   Click            css=.button-register
+
+   Wait For Elements State     css=.swal2-html-container    visible    5
+
+   Get Text                    css=.swal2-html-container    equal     Recebemos o seu cadastro e em breve retornaremos o contato.   
+ 
