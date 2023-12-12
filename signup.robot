@@ -15,16 +15,26 @@ Deve poder cadastrar um novo dog walker
     ${complemento}                Set Variable     Apto 200  
     ${addressDistrict}            Set Variable     Itaim Bibi
     ${addressCityUf}              Set Variable     São Paulo/SP
-    
-      
+    ${cnh}                        Set Variable     toretto.jpg
+
+    Go to signup page
+    Fill signup form     ${name}      ${email}     ${cpf}     ${cep}     ${addressStreet}     ${addressDistrict}    ${addressCityUf}     ${numero}    ${complemento}     ${cnh}  
+    Submit signup form
+    Popup should be    Recebemos o seu cadastro e em breve retornaremos o contato.  
 
 
+*** Keywords ***      
+
+Go to signup page
     New Browser    browser=chromium    headless=False
     New Page       https://walkdog.vercel.app/signup
 
     Wait For Elements State    form h1    visible    5000
     Get Text    form h1    equal    Faça seu cadastro
 
+Fill signup form
+    [Arguments]      ${name}      ${email}     ${cpf}     ${cep}     ${addressStreet}     ${addressDistrict}    ${addressCityUf}     ${numero}    ${complemento}     ${cnh}  
+    
     Fill Text    css=input[placeholder$=completo]           ${name}
     Fill Text    css=input[name=email]                      ${email}   
     Fill Text    css=input[placeholder^=CPF]                ${cpf}
@@ -39,11 +49,13 @@ Deve poder cadastrar um novo dog walker
     Fill Text       css=input[name=addressNumber]           ${numero}
     Fill Text       css=input[name=addressDetails]          ${complemento}
 
-   Upload File By Selector    css=input[type=file]          ${EXECDIR}/toretto.jpg    
+    Upload File By Selector    css=input[type=file]          ${EXECDIR}/${cnh}      
+    
+Submit signup form
+    Click            css=.button-register
 
-   Click            css=.button-register
-
-   Wait For Elements State     css=.swal2-html-container    visible    5
-
-   Get Text                    css=.swal2-html-container    equal     Recebemos o seu cadastro e em breve retornaremos o contato.   
+Popup should be
+    [Arguments]    ${expected.text}
+    Wait For Elements State     css=.swal2-html-container    visible    5
+    Get Text                    css=.swal2-html-container    equal     ${expected.text} 
  
